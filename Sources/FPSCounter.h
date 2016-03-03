@@ -1,6 +1,6 @@
 //
 //  FPSCounter.h
-//  FPSCounter
+//  fps-counter
 //
 //  Created by Markus Gasser on 03.03.16.
 //  Copyright © 2016 konoma GmbH. All rights reserved.

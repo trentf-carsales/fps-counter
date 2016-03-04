@@ -12,8 +12,37 @@ import UIKit
 internal class FPSStatusBarViewController: UIViewController, FPSCounterDelegate {
 
     private let fpsCounter = FPSCounter()
-
     private let label: UILabel = UILabel()
+
+
+    // MARK: - Initialization
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+
+        self.commonInit()
+    }
+
+    required init?(coder decoder: NSCoder) {
+        super.init(coder: decoder)
+
+        self.commonInit()
+    }
+
+    private func commonInit() {
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "updateStatusBarFrame:",
+            name: UIApplicationDidChangeStatusBarOrientationNotification,
+            object: nil
+        )
+    }
+
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+
+
+    // MARK: - View Lifecycle and Events
 
     override func loadView() {
         self.view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0))
@@ -26,8 +55,18 @@ internal class FPSStatusBarViewController: UIViewController, FPSCounterDelegate 
         self.fpsCounter.delegate = self
     }
 
+    func updateStatusBarFrame(notification: NSNotification) {
+        let application = notification.object as? UIApplication
+        let frame = CGRect(x: 0.0, y: 0.0, width: application?.keyWindow?.bounds.width ?? 0.0, height: 20.0)
+
+        FPSStatusBarViewController.statusBarWindow.frame = frame
+    }
+
+
+    // MARK: - FPSCounterDelegate
+
     func fpsCounter(counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
-        let ms = 1000 / fps
+        let ms = 1000 / max(fps, 1)
         self.label.text = "\(fps) FPS (\(ms) milliseconds per frame)"
 
         if fps >= 45 {
@@ -42,6 +81,8 @@ internal class FPSStatusBarViewController: UIViewController, FPSCounterDelegate 
         }
     }
 
+
+    // MARK: - Getting the shared status bar window
 
     static var statusBarWindow: UIWindow = {
         let window = UIWindow()

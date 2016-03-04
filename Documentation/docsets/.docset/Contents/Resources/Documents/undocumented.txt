@@ -1,0 +1,12 @@
+FPSCounter.swift
+	public class FPSCounter : NSObject
+	public class FPSCounter: NSObject
+	public override init()
+	public weak var delegate: FPSCounterDelegate?
+	public var notificationDelay: NSTimeInterval = 1.0
+	public func startTracking(inRunLoop runloop: NSRunLoop = NSRunLoop.mainRunLoop(), mode: String = NSRunLoopCommonModes)
+	public func stopTracking()
+	public protocol FPSCounterDelegate: NSObjectProtocol
+	func fpsCounter(counter: FPSCounter, didUpdateFramesPerSecond fps: Int)
+FPSStatusBarViewController.swift
+	public class func showInStatusBar(application: UIApplication, runloop: NSRunLoop? = nil, mode: String? = nil)

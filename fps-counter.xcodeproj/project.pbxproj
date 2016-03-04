@@ -16,8 +16,8 @@
 		05371A4C1C88EB33004C7A44 /* FPSCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05371A1F1C88DEA0004C7A44 /* FPSCounter.framework */; };
 		05371A4D1C88EB33004C7A44 /* FPSCounter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 05371A1F1C88DEA0004C7A44 /* FPSCounter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		05371A501C88EB6F004C7A44 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05371A4F1C88EB6F004C7A44 /* MapKit.framework */; };
-		05371A521C88F21A004C7A44 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05371A511C88F21A004C7A44 /* TableViewController.swift */; };
 		05371A541C88FBCB004C7A44 /* FPSStatusBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05371A531C88FBCB004C7A44 /* FPSStatusBarViewController.swift */; };
+		05371A561C8907C0004C7A44 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05371A511C88F21A004C7A44 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -247,7 +247,6 @@
 			files = (
 				05371A541C88FBCB004C7A44 /* FPSStatusBarViewController.swift in Sources */,
 				05371A321C88DFFB004C7A44 /* FPSCounter.swift in Sources */,
-				05371A521C88F21A004C7A44 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05371A3A1C88EA4C004C7A44 /* AppDelegate.swift in Sources */,
+				05371A561C8907C0004C7A44 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

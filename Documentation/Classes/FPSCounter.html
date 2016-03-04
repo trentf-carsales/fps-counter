@@ -14,7 +14,7 @@
     <a title="FPSCounter Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (0% documented)</p>
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -49,7 +49,21 @@
         <section>
           <section class="section">
             <h1>FPSCounter</h1>
-            <p>Undocumented</p>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FPSCounter</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>A class that tracks the current FPS of the running application.</p>
+
+<p>FPSCounter uses CADisplayLink updates to count the frames per second drawn.
+Set the delegate of this class to get notified in certain intervals of the
+current FPS.</p>
+
+<p>If you just want to see the FPS in the application you can use the
+<code>FPSCounter.showInStatusBar(UIApplication.sharedApplication())</code>
+convenience method.</p>
 
           </section>
           <section class="section task-group-section">
@@ -75,8 +89,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Create a new FPSCounter.</p>
 
+<p>To start receiving FPS updates you need to start tracking with the
+<code><a href="../Classes/FPSCounter.html#/s:FC10FPSCounter10FPSCounter13startTrackingFS0_FT9inRunLoopCSo9NSRunLoop4modeSS_T_">startTracking(inRunLoop:mode:)</a></code> method.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">override</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -105,8 +130,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The delegate that should receive FPS updates.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt">FPSCounterDelegate</span><span class="p">?</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -124,8 +157,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Delay between FPS updates. Longer delays mean more averaged FPS numbers.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">notificationDelay</span><span class="p">:</span> <span class="kt">NSTimeInterval</span> <span class="o">=</span> <span class="mf">1.0</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -154,8 +195,64 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Start tracking FPS updates.</p>
 
+<p>You can specify wich runloop to use for tracking, as well as the runloop modes.
+Usually you&rsquo;ll want the main runloop (default), and either the common run loop modes
+(default), or the tracking mode (<code>UITrackingRunLoopMode</code>).</p>
+
+<p>When the counter is already tracking, it&rsquo;s stopped first.</p>
+
+<ul>
+<li>Parameters:
+
+<ul>
+<li>runloop: The runloop to start tracking in</li>
+<li>mode:    The mode(s) to track in the runloop</li>
+</ul></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">startTracking</span><span class="p">(</span><span class="n">inRunLoop</span> <span class="nv">runloop</span><span class="p">:</span> <span class="kt">NSRunLoop</span> <span class="o">=</span> <span class="kt">NSRunLoop</span><span class="o">.</span><span class="nf">mainRunLoop</span><span class="p">(),</span> <span class="nv">mode</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="kt">NSRunLoopCommonModes</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>runloop</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The runloop to start tracking in</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>mode</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The mode(s) to track in the runloop</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -173,8 +270,18 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Stop tracking FPS updates.</p>
 
+<p>This method does nothing if the counter is not currently tracking.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">stopTracking</span><span class="p">()</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -196,8 +303,76 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Add a label in the status bar that shows the applications current FPS.</p>
 
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Only do this in debug builds. Apple may reject your app if it covers the status bar.</p>
+
+</div>
+
+<p><li><p>Parameters:</p></p>
+
+<p><ul>
+<li>application: The <code>UIApplication</code> to show the FPS for</li>
+<li>runloop:     The <code>NSRunLoop</code> to use when tracking FPS or <code>nil</code> (then it uses the main run loop)</li>
+<li>mode:        The run loop mode to use when tracking. If <code>nil</code> it uses <code>NSRunLoopCommonModes</code></li>
+</ul></li></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">showInStatusBar</span><span class="p">(</span><span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="nv">runloop</span><span class="p">:</span> <span class="kt">NSRunLoop</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">mode</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>application</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>UIApplication</code> to show the FPS for</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>runloop</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>NSRunLoop</code> to use when tracking FPS or <code>nil</code> (then it uses the main run loop)</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>mode</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The run loop mode to use when tracking. If <code>nil</code> it uses <code>NSRunLoopCommonModes</code></p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>

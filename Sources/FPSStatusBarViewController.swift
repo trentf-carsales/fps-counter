@@ -9,6 +9,8 @@
 import UIKit
 
 
+/// A view controller to show a FPS label in the status bar.
+///
 internal class FPSStatusBarViewController: UIViewController, FPSCounterDelegate {
 
     private let fpsCounter = FPSCounter()
@@ -95,6 +97,16 @@ internal class FPSStatusBarViewController: UIViewController, FPSCounterDelegate 
 
 public extension FPSCounter {
 
+    /// Add a label in the status bar that shows the applications current FPS.
+    ///
+    /// - Note:
+    ///   Only do this in debug builds. Apple may reject your app if it covers the status bar.
+    ///
+    /// - Parameters:
+    ///   - application: The `UIApplication` to show the FPS for
+    ///   - runloop:     The `NSRunLoop` to use when tracking FPS or `nil` (then it uses the main run loop)
+    ///   - mode:        The run loop mode to use when tracking. If `nil` it uses `NSRunLoopCommonModes`
+    ///
     public class func showInStatusBar(application: UIApplication, runloop: NSRunLoop? = nil, mode: String? = nil) {
         let window = FPSStatusBarViewController.statusBarWindow
         window.frame = application.statusBarFrame

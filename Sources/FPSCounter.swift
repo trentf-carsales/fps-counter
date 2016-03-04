@@ -59,7 +59,7 @@ public class FPSCounter: NSObject {
     private var runloop: NSRunLoop?
     private var mode: String?
 
-    public func startTracking(inRunLoop runloop: NSRunLoop = NSRunLoop.mainRunLoop(), mode: String = UITrackingRunLoopMode) {
+    public func startTracking(inRunLoop runloop: NSRunLoop = NSRunLoop.mainRunLoop(), mode: String = NSRunLoopCommonModes) {
         self.stopTracking()
 
         self.runloop = runloop

@@ -54,7 +54,7 @@ internal class FPSStatusBarViewController: UIViewController, FPSCounterDelegate 
 
 public extension FPSCounter {
 
-    public class func showInStatusBar(application: UIApplication, runloop: NSRunLoop = NSRunLoop.mainRunLoop(), mode: String = UITrackingRunLoopMode) {
+    public class func showInStatusBar(application: UIApplication, runloop: NSRunLoop = NSRunLoop.mainRunLoop(), mode: String = NSRunLoopCommonModes) {
         let window = FPSStatusBarViewController.statusBarWindow
         window.frame = application.statusBarFrame
         window.hidden = false

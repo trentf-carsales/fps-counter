@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "05371A1E1C88DEA0004C7A44"
-               BuildableName = "FPSCounter.framework"
-               BlueprintName = "FPSCounter"
-               ReferencedContainer = "container:fps-counter.xcodeproj">
+               BlueprintIdentifier = "05371A361C88EA4C004C7A44"
+               BuildableName = "SampleApp.app"
+               BlueprintName = "SampleApp"
+               ReferencedContainer = "container:FPSCounter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -42,15 +42,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "05371A1E1C88DEA0004C7A44"
-            BuildableName = "FPSCounter.framework"
-            BlueprintName = "FPSCounter"
-            ReferencedContainer = "container:fps-counter.xcodeproj">
+            BlueprintIdentifier = "05371A361C88EA4C004C7A44"
+            BuildableName = "SampleApp.app"
+            BlueprintName = "SampleApp"
+            ReferencedContainer = "container:FPSCounter.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -63,10 +64,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "05371A1E1C88DEA0004C7A44"
-            BuildableName = "FPSCounter.framework"
-            BlueprintName = "FPSCounter"
-            ReferencedContainer = "container:fps-counter.xcodeproj">
+            BlueprintIdentifier = "05371A361C88EA4C004C7A44"
+            BuildableName = "SampleApp.app"
+            BlueprintName = "SampleApp"
+            ReferencedContainer = "container:FPSCounter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

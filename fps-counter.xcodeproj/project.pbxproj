@@ -150,6 +150,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05371A271C88DEA0004C7A44 /* Build configuration list for PBXNativeTarget "FPSCounter" */;
 			buildPhases = (
+				05371A571C8A2CAB004C7A44 /* Lint Swift Files */,
 				05371A1A1C88DEA0004C7A44 /* Sources */,
 				05371A1B1C88DEA0004C7A44 /* Frameworks */,
 				05371A1C1C88DEA0004C7A44 /* Headers */,
@@ -239,6 +240,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05371A571C8A2CAB004C7A44 /* Lint Swift Files */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Lint Swift Files";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		05371A1A1C88DEA0004C7A44 /* Sources */ = {

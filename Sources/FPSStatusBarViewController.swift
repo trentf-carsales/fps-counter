@@ -51,7 +51,7 @@ internal class FPSStatusBarViewController: UIViewController, FPSCounterDelegate 
         self.label.autoresizingMask = [ .FlexibleWidth, .FlexibleHeight ]
         self.label.font = UIFont.boldSystemFontOfSize(10.0)
         self.view.addSubview(self.label)
-        
+
         self.fpsCounter.delegate = self
     }
 
@@ -95,11 +95,16 @@ internal class FPSStatusBarViewController: UIViewController, FPSCounterDelegate 
 
 public extension FPSCounter {
 
-    public class func showInStatusBar(application: UIApplication, runloop: NSRunLoop = NSRunLoop.mainRunLoop(), mode: String = NSRunLoopCommonModes) {
+    public class func showInStatusBar(application: UIApplication, runloop: NSRunLoop? = nil, mode: String? = nil) {
         let window = FPSStatusBarViewController.statusBarWindow
         window.frame = application.statusBarFrame
         window.hidden = false
 
-        (window.rootViewController as! FPSStatusBarViewController).fpsCounter.startTracking(inRunLoop: runloop, mode: mode)
+        if let controller = window.rootViewController as? FPSStatusBarViewController {
+            controller.fpsCounter.startTracking(
+                inRunLoop: runloop ?? NSRunLoop.mainRunLoop(),
+                mode: mode ?? NSRunLoopCommonModes
+            )
+        }
     }
 }

@@ -97,6 +97,8 @@ internal class FPSStatusBarViewController: UIViewController, FPSCounterDelegate 
 
 public extension FPSCounter {
 
+    // MARK: - Show FPS in the status bar
+
     /// Add a label in the status bar that shows the applications current FPS.
     ///
     /// - Note:

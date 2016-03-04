@@ -12,13 +12,12 @@ import QuartzCore
 
 /// A class that tracks the current FPS of the running application.
 ///
-/// FPSCounter uses CADisplayLink updates to count the frames per second drawn.
+/// `FPSCounter` uses `CADisplayLink` updates to count the frames per second drawn.
 /// Set the delegate of this class to get notified in certain intervals of the
 /// current FPS.
 ///
 /// If you just want to see the FPS in the application you can use the
-/// `FPSCounter.showInStatusBar(UIApplication.sharedApplication())`
-/// convenience method.
+/// `FPSCounter.showInStatusBar(_:)` convenience method.
 ///
 public class FPSCounter: NSObject {
 

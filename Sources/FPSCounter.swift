@@ -148,7 +148,7 @@ public class FPSCounter: NSObject {
 
 /// The delegate protocol for the FPSCounter class.
 ///
-/// Implement this protocol if you want to receive updates from a FPSCounter.
+/// Implement this protocol if you want to receive updates from a `FPSCounter`.
 ///
 public protocol FPSCounterDelegate: NSObjectProtocol {
 

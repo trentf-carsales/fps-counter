@@ -1,4 +1,6 @@
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage) [![CocoaPods](https://img.shields.io/cocoapods/v/FPSCounter.svg)](https://cocoapods.org/pods/FPSCounter) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/konoma/fps-counter/blob/master/LICENSE)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage)
+[![CocoaPods](https://img.shields.io/cocoapods/v/FPSCounter.svg)](https://cocoapods.org/pods/FPSCounter)
+[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/konoma/fps-counter/blob/master/LICENSE)
 
 # FPSCounter
 

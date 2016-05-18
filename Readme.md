@@ -56,9 +56,9 @@ following to your `Cartfile`:
 Then run the standard `carthage update` process.
 
 
-### Cocapods
+### CocoaPods
 
-To install this library via [Cocoapods](https://cocoapods.org) add the following to
+To install this library via [CocoaPods](https://cocoapods.org) add the following to
 your `Podfile`:
 
     pod 'FPSCounter', '~> 1.0'

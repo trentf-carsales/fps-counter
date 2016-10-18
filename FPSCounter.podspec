@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.name         = "FPSCounter"
-  s.version      = "1.0.0"
+  s.version      = "2.0.0"
   s.homepage     = "https://github.com/konoma/fps-counter"
   s.summary      = "A small library to measure the frame rate of an iOS Application."
   s.description  = <<-DESC
@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  s.source = { :git => "https://github.com/konoma/fps-counter.git", :tag => "1.0.0" }
+  s.source = { :git => "https://github.com/konoma/fps-counter.git", :tag => "2.0.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

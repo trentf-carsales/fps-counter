@@ -40,7 +40,7 @@ public class FPSCounter: NSObject {
         /// - Parameters:
         ///   - displayLink: The display link that updated
         ///
-        func updateFromDisplayLink(displayLink: CADisplayLink) {
+        func updateFromDisplayLink(_ displayLink: CADisplayLink) {
             self.parentCounter?.updateFromDisplayLink(displayLink)
         }
     }
@@ -58,7 +58,10 @@ public class FPSCounter: NSObject {
     ///
     public override init() {
         self.displayLinkDelegate = DisplayLinkDelegate()
-        self.displayLink = CADisplayLink(target: self.displayLinkDelegate, selector: "updateFromDisplayLink:")
+        self.displayLink = CADisplayLink(
+            target: self.displayLinkDelegate,
+            selector: #selector(DisplayLinkDelegate.updateFromDisplayLink(_:))
+        )
 
         super.init()
 
@@ -76,13 +79,13 @@ public class FPSCounter: NSObject {
     public weak var delegate: FPSCounterDelegate?
 
     /// Delay between FPS updates. Longer delays mean more averaged FPS numbers.
-    public var notificationDelay: NSTimeInterval = 1.0
+    public var notificationDelay: TimeInterval = 1.0
 
 
     // MARK: - Tracking
 
-    private var runloop: NSRunLoop?
-    private var mode: String?
+    private var runloop: RunLoop?
+    private var mode: RunLoopMode?
 
     /// Start tracking FPS updates.
     ///
@@ -96,11 +99,12 @@ public class FPSCounter: NSObject {
     ///   - runloop: The runloop to start tracking in
     ///   - mode:    The mode(s) to track in the runloop
     ///
-    public func startTracking(inRunLoop runloop: NSRunLoop = NSRunLoop.mainRunLoop(), mode: String = NSRunLoopCommonModes) {
+    public func startTracking(inRunLoop runloop: RunLoop = RunLoop.main, mode: RunLoopMode = RunLoopMode.commonModes) {
         self.stopTracking()
 
         self.runloop = runloop
-        self.displayLink.addToRunLoop(runloop, forMode: mode)
+        self.mode = mode
+        self.displayLink.add(to: runloop, forMode: mode)
     }
 
     /// Stop tracking FPS updates.
@@ -108,9 +112,9 @@ public class FPSCounter: NSObject {
     /// This method does nothing if the counter is not currently tracking.
     ///
     public func stopTracking() {
-        guard let runloop = self.runloop, mode = self.mode else { return }
+        guard let runloop = self.runloop, let mode = self.mode else { return }
 
-        self.displayLink.removeFromRunLoop(runloop, forMode: mode)
+        self.displayLink.remove(from: runloop, forMode: mode)
         self.runloop = nil
         self.mode = nil
     }
@@ -121,7 +125,7 @@ public class FPSCounter: NSObject {
     private var lastNotificationTime: CFAbsoluteTime = 0.0
     private var numberOfFrames: Int = 0
 
-    private func updateFromDisplayLink(displayLink: CADisplayLink) {
+    private func updateFromDisplayLink(_ displayLink: CADisplayLink) {
         if self.lastNotificationTime == 0.0 {
             self.lastNotificationTime = CFAbsoluteTimeGetCurrent()
             return
@@ -139,7 +143,7 @@ public class FPSCounter: NSObject {
         }
     }
 
-    private func notifyUpdateForElapsedTime(elapsedTime: CFAbsoluteTime) {
+    private func notifyUpdateForElapsedTime(_ elapsedTime: CFAbsoluteTime) {
         let fps = Int(round(Double(self.numberOfFrames) / elapsedTime))
         self.delegate?.fpsCounter(self, didUpdateFramesPerSecond: fps)
     }
@@ -158,5 +162,5 @@ public protocol FPSCounterDelegate: NSObjectProtocol {
     ///   - counter: The FPSCounter that sent the update
     ///   - fps:     The current FPS of the application
     ///
-    func fpsCounter(counter: FPSCounter, didUpdateFramesPerSecond fps: Int)
+    func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int)
 }

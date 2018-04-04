@@ -74,11 +74,11 @@ class FPSStatusBarViewController: UIViewController {
 // MARK: - FPSCounterDelegate
 
 extension FPSStatusBarViewController: FPSCounterDelegate {
-    
+
     func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
         let ms = 1000 / max(fps, 1)
         label.text = "\(fps) FPS (\(ms) milliseconds per frame)"
-        
+
         if fps >= 45 {
             view.backgroundColor = .green
             label.textColor = .black

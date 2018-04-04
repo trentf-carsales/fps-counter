@@ -123,7 +123,7 @@ public class FPSCounter: NSObject {
     // MARK: - Handling Frame Updates
 
     private var lastNotificationTime: CFAbsoluteTime = 0.0
-    private var numberOfFrames: Int = 0
+    private var numberOfFrames = 0
 
     private func updateFromDisplayLink(_ displayLink: CADisplayLink) {
         if lastNotificationTime == 0.0 {

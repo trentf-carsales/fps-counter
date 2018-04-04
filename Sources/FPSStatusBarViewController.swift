@@ -34,7 +34,7 @@ internal class FPSStatusBarViewController: UIViewController, FPSCounterDelegate 
     private func commonInit() {
         NotificationCenter.default.addObserver(self,
             selector: #selector(FPSStatusBarViewController.updateStatusBarFrame(_:)),
-            name: NSNotification.Name.UIApplicationDidChangeStatusBarOrientation,
+            name: .UIApplicationDidChangeStatusBarOrientation,
             object: nil
         )
     }
@@ -51,7 +51,7 @@ internal class FPSStatusBarViewController: UIViewController, FPSCounterDelegate 
 
         self.label.frame = self.view.bounds.insetBy(dx: 10.0, dy: 0.0)
         self.label.autoresizingMask = [ .flexibleWidth, .flexibleHeight ]
-        self.label.font = UIFont.boldSystemFont(ofSize: 10.0)
+        self.label.font = .boldSystemFont(ofSize: 10.0)
         self.view.addSubview(self.label)
 
         self.fpsCounter.delegate = self
@@ -116,8 +116,8 @@ public extension FPSCounter {
 
         if let controller = window.rootViewController as? FPSStatusBarViewController {
             controller.fpsCounter.startTracking(
-                inRunLoop: runloop ?? RunLoop.main,
-                mode: mode ?? RunLoopMode.commonModes
+                inRunLoop: runloop ?? .main,
+                mode: mode ?? .commonModes
             )
         }
     }

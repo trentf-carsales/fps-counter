@@ -11,10 +11,10 @@ import UIKit
 
 /// A view controller to show a FPS label in the status bar.
 ///
-internal class FPSStatusBarViewController: UIViewController, FPSCounterDelegate {
+internal class FPSStatusBarViewController: UIViewController {
 
     fileprivate let fpsCounter = FPSCounter()
-    private let label: UILabel = UILabel()
+    fileprivate let label: UILabel = UILabel() // TODO: Make it private in swift 4
 
 
     // MARK: - Initialization
@@ -65,25 +65,6 @@ internal class FPSStatusBarViewController: UIViewController, FPSCounterDelegate 
     }
 
 
-    // MARK: - FPSCounterDelegate
-
-    func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
-        let ms = 1000 / max(fps, 1)
-        self.label.text = "\(fps) FPS (\(ms) milliseconds per frame)"
-
-        if fps >= 45 {
-            self.view.backgroundColor = .green
-            self.label.textColor = .black
-        } else if fps >= 30 {
-            self.view.backgroundColor = .orange
-            self.label.textColor = .white
-        } else {
-            self.view.backgroundColor = .red
-            self.label.textColor = .white
-        }
-    }
-
-
     // MARK: - Getting the shared status bar window
 
     static var statusBarWindow: UIWindow = {
@@ -92,6 +73,29 @@ internal class FPSStatusBarViewController: UIViewController, FPSCounterDelegate 
         window.rootViewController = FPSStatusBarViewController()
         return window
     }()
+}
+
+
+// MARK: - FPSCounterDelegate
+
+extension FPSStatusBarViewController: FPSCounterDelegate {
+    
+    func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
+        let ms = 1000 / max(fps, 1)
+        label.text = "\(fps) FPS (\(ms) milliseconds per frame)"
+        
+        if fps >= 45 {
+            view.backgroundColor = .green
+            label.textColor = .black
+        } else if fps >= 30 {
+            view.backgroundColor = .orange
+            label.textColor = .white
+        } else {
+            view.backgroundColor = .red
+            label.textColor = .white
+        }
+    }
+    
 }
 
 

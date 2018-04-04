@@ -11,7 +11,7 @@ import UIKit
 
 /// A view controller to show a FPS label in the status bar.
 ///
-internal class FPSStatusBarViewController: UIViewController {
+class FPSStatusBarViewController: UIViewController {
 
     fileprivate let fpsCounter = FPSCounter()
     fileprivate let label = UILabel() // TODO: Make it private in swift 4

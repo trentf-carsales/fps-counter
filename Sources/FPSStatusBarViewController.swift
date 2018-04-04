@@ -22,13 +22,13 @@ internal class FPSStatusBarViewController: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
-        self.commonInit()
+        commonInit()
     }
 
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
 
-        self.commonInit()
+        commonInit()
     }
 
     private func commonInit() {
@@ -47,14 +47,14 @@ internal class FPSStatusBarViewController: UIViewController {
     // MARK: - View Lifecycle and Events
 
     override func loadView() {
-        self.view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0))
+        view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0))
 
-        self.label.frame = self.view.bounds.insetBy(dx: 10.0, dy: 0.0)
-        self.label.autoresizingMask = [ .flexibleWidth, .flexibleHeight ]
-        self.label.font = .boldSystemFont(ofSize: 10.0)
-        self.view.addSubview(self.label)
+        label.frame = view.bounds.insetBy(dx: 10.0, dy: 0.0)
+        label.autoresizingMask = [ .flexibleWidth, .flexibleHeight ]
+        label.font = .boldSystemFont(ofSize: 10.0)
+        view.addSubview(label)
 
-        self.fpsCounter.delegate = self
+        fpsCounter.delegate = self
     }
 
     func updateStatusBarFrame(_ notification: Notification) {

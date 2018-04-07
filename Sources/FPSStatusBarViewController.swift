@@ -79,13 +79,14 @@ extension FPSStatusBarViewController: FPSCounterDelegate {
         let ms = 1000 / max(fps, 1)
         label.text = "\(fps) FPS (\(ms) milliseconds per frame)"
 
-        if fps >= 45 {
+        switch fps {
+        case 45...:
             view.backgroundColor = .green
             label.textColor = .black
-        } else if fps >= 30 {
+        case 35...:
             view.backgroundColor = .orange
             label.textColor = .white
-        } else {
+        default:
             view.backgroundColor = .red
             label.textColor = .white
         }

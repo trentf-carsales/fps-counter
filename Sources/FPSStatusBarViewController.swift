@@ -13,7 +13,7 @@ import UIKit
 class FPSStatusBarViewController: UIViewController {
 
     fileprivate let fpsCounter = FPSCounter()
-    fileprivate let label = UILabel() // TODO: Make it private in swift 4
+    private let label = UILabel()
 
     // MARK: - Initialization
 
@@ -54,7 +54,7 @@ class FPSStatusBarViewController: UIViewController {
         fpsCounter.delegate = self
     }
 
-    func updateStatusBarFrame(_ notification: Notification) {
+    @objc func updateStatusBarFrame(_ notification: Notification) {
         let application = notification.object as? UIApplication
         let frame = CGRect(x: 0.0, y: 0.0, width: application?.keyWindow?.bounds.width ?? 0.0, height: 20.0)
 
@@ -63,7 +63,7 @@ class FPSStatusBarViewController: UIViewController {
 
     // MARK: - Getting the shared status bar window
 
-    static var statusBarWindow: UIWindow = {
+    @objc static var statusBarWindow: UIWindow = {
         let window = UIWindow()
         window.windowLevel = UIWindowLevelStatusBar
         window.rootViewController = FPSStatusBarViewController()
@@ -75,7 +75,7 @@ class FPSStatusBarViewController: UIViewController {
 
 extension FPSStatusBarViewController: FPSCounterDelegate {
 
-    func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
+    @objc func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
         let ms = 1000 / max(fps, 1)
         label.text = "\(fps) FPS (\(ms) milliseconds per frame)"
 
@@ -107,7 +107,7 @@ public extension FPSCounter {
     ///   - runloop:     The `NSRunLoop` to use when tracking FPS or `nil` (then it uses the main run loop)
     ///   - mode:        The run loop mode to use when tracking. If `nil` it uses `NSRunLoopCommonModes`
     ///
-    public class func showInStatusBar(_ application: UIApplication, runloop: RunLoop? = nil, mode: RunLoopMode? = nil) {
+    @objc public class func showInStatusBar(_ application: UIApplication, runloop: RunLoop? = nil, mode: RunLoopMode? = nil) {
         let window = FPSStatusBarViewController.statusBarWindow
         window.frame = application.statusBarFrame
         window.isHidden = false

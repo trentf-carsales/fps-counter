@@ -30,7 +30,7 @@ public class FPSCounter: NSObject {
     internal class DisplayLinkDelegate: NSObject {
 
         /// A weak ref to the parent FPSCounter instance.
-        weak var parentCounter: FPSCounter?
+        @objc weak var parentCounter: FPSCounter?
 
         /// Notify the parent FPSCounter of a CADisplayLink update.
         ///
@@ -39,7 +39,7 @@ public class FPSCounter: NSObject {
         /// - Parameters:
         ///   - displayLink: The display link that updated
         ///
-        func updateFromDisplayLink(_ displayLink: CADisplayLink) {
+        @objc func updateFromDisplayLink(_ displayLink: CADisplayLink) {
             parentCounter?.updateFromDisplayLink(displayLink)
         }
     }
@@ -76,7 +76,7 @@ public class FPSCounter: NSObject {
     public weak var delegate: FPSCounterDelegate?
 
     /// Delay between FPS updates. Longer delays mean more averaged FPS numbers.
-    public var notificationDelay: TimeInterval = 1.0
+    @objc public var notificationDelay: TimeInterval = 1.0
 
     // MARK: - Tracking
 
@@ -95,7 +95,7 @@ public class FPSCounter: NSObject {
     ///   - runloop: The runloop to start tracking in
     ///   - mode:    The mode(s) to track in the runloop
     ///
-    public func startTracking(inRunLoop runloop: RunLoop = .main, mode: RunLoopMode = .commonModes) {
+    @objc public func startTracking(inRunLoop runloop: RunLoop = .main, mode: RunLoopMode = .commonModes) {
         stopTracking()
 
         self.runloop = runloop
@@ -107,7 +107,7 @@ public class FPSCounter: NSObject {
     ///
     /// This method does nothing if the counter is not currently tracking.
     ///
-    public func stopTracking() {
+    @objc public func stopTracking() {
         guard let runloop = runloop, let mode = mode else { return }
 
         displayLink.remove(from: runloop, forMode: mode)

@@ -27,7 +27,7 @@ public class FPSCounter: NSObject {
     /// it would create a retain cycle. The delegate has a weak reference
     /// to its parent FPSCounter, thus preventing this.
     ///
-    internal class DisplayLinkDelegate: NSObject {
+    internal class DisplayLinkProxy: NSObject {
 
         /// A weak ref to the parent FPSCounter instance.
         @objc weak var parentCounter: FPSCounter?
@@ -47,7 +47,7 @@ public class FPSCounter: NSObject {
     // MARK: - Initialization
 
     private let displayLink: CADisplayLink
-    private let displayLinkDelegate: DisplayLinkDelegate
+    private let displayLinkProxy: DisplayLinkProxy
 
     /// Create a new FPSCounter.
     ///
@@ -55,15 +55,15 @@ public class FPSCounter: NSObject {
     /// `startTracking(inRunLoop:mode:)` method.
     ///
     public override init() {
-        displayLinkDelegate = DisplayLinkDelegate()
+        displayLinkProxy = DisplayLinkProxy()
         displayLink = CADisplayLink(
-            target: displayLinkDelegate,
-            selector: #selector(DisplayLinkDelegate.updateFromDisplayLink(_:))
+            target: displayLinkProxy,
+            selector: #selector(DisplayLinkProxy.updateFromDisplayLink(_:))
         )
 
         super.init()
 
-        displayLinkDelegate.parentCounter = self
+        displayLinkProxy.parentCounter = self
     }
 
     deinit {

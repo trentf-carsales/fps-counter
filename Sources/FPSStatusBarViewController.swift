@@ -8,12 +8,14 @@
 
 import UIKit
 
+
 /// A view controller to show a FPS label in the status bar.
 ///
 class FPSStatusBarViewController: UIViewController {
 
     fileprivate let fpsCounter = FPSCounter()
     fileprivate let label = UILabel() // TODO: Make it private after depricating swift 3 support
+
 
     // MARK: - Initialization
 
@@ -41,6 +43,7 @@ class FPSStatusBarViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
 
+
     // MARK: - View Lifecycle and Events
 
     override func loadView() {
@@ -61,6 +64,7 @@ class FPSStatusBarViewController: UIViewController {
         FPSStatusBarViewController.statusBarWindow.frame = frame
     }
 
+
     // MARK: - Getting the shared status bar window
 
     @objc static var statusBarWindow: UIWindow = {
@@ -70,6 +74,7 @@ class FPSStatusBarViewController: UIViewController {
         return window
     }()
 }
+
 
 // MARK: - FPSCounterDelegate
 
@@ -92,6 +97,7 @@ extension FPSStatusBarViewController: FPSCounterDelegate {
         }
     }
 }
+
 
 public extension FPSCounter {
 

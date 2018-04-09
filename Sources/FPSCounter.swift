@@ -9,6 +9,7 @@
 import UIKit
 import QuartzCore
 
+
 /// A class that tracks the current FPS of the running application.
 ///
 /// `FPSCounter` uses `CADisplayLink` updates to count the frames per second drawn.
@@ -44,6 +45,7 @@ public class FPSCounter: NSObject {
         }
     }
 
+
     // MARK: - Initialization
 
     private let displayLink: CADisplayLink
@@ -70,6 +72,7 @@ public class FPSCounter: NSObject {
         self.displayLink.invalidate()
     }
 
+
     // MARK: - Configuration
 
     /// The delegate that should receive FPS updates.
@@ -77,6 +80,7 @@ public class FPSCounter: NSObject {
 
     /// Delay between FPS updates. Longer delays mean more averaged FPS numbers.
     @objc public var notificationDelay: TimeInterval = 1.0
+
 
     // MARK: - Tracking
 
@@ -115,6 +119,7 @@ public class FPSCounter: NSObject {
         self.mode = nil
     }
 
+
     // MARK: - Handling Frame Updates
 
     private var lastNotificationTime: CFAbsoluteTime = 0.0
@@ -143,6 +148,7 @@ public class FPSCounter: NSObject {
         self.delegate?.fpsCounter(self, didUpdateFramesPerSecond: fps)
     }
 }
+
 
 /// The delegate protocol for the FPSCounter class.
 ///

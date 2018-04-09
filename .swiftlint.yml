@@ -2,6 +2,7 @@ line_length: 140
 
 disabled_rules:
   - closing_brace
+  - vertical_whitespace
 
 included:
   - Sources

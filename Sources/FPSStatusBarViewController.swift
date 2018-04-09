@@ -14,7 +14,7 @@ import UIKit
 class FPSStatusBarViewController: UIViewController {
 
     fileprivate let fpsCounter = FPSCounter()
-    fileprivate let label = UILabel() // TODO: Make it private after depricating swift 3 support
+    fileprivate let label = UILabel() // TODO: Make it private after deprecating swift 3 support
 
 
     // MARK: - Initialization
@@ -81,8 +81,8 @@ class FPSStatusBarViewController: UIViewController {
 extension FPSStatusBarViewController: FPSCounterDelegate {
 
     @objc func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
-        let ms = 1000 / max(fps, 1)
-        self.label.text = "\(fps) FPS (\(ms) milliseconds per frame)"
+        let milliseconds = 1000 / max(fps, 1)
+        self.label.text = "\(fps) FPS (\(milliseconds) milliseconds per frame)"
 
         switch fps {
         case 45...:

@@ -58,6 +58,7 @@
 		05371A4F1C88EB6F004C7A44 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		05371A511C88F21A004C7A44 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		05371A531C88FBCB004C7A44 /* FPSStatusBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPSStatusBarViewController.swift; sourceTree = "<group>"; };
+		05387057207B860900C8F0E9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +84,7 @@
 		05371A151C88DEA0004C7A44 = {
 			isa = PBXGroup;
 			children = (
+				05387057207B860900C8F0E9 /* .swiftlint.yml */,
 				05371A2C1C88DEEF004C7A44 /* Sources */,
 				05371A381C88EA4C004C7A44 /* Sample App */,
 				05371A551C89058A004C7A44 /* Frameworks */,
@@ -191,7 +193,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "konoma GmbH";
 				TargetAttributes = {
 					05371A1E1C88DEA0004C7A44 = {

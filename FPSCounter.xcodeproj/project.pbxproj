@@ -60,6 +60,7 @@
 		05371A531C88FBCB004C7A44 /* FPSStatusBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPSStatusBarViewController.swift; sourceTree = "<group>"; };
 		05387057207B860900C8F0E9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		05387058207B88B500C8F0E9 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		05387059207B8CA500C8F0E9 /* FPSCounter.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = FPSCounter.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				05387058207B88B500C8F0E9 /* Readme.md */,
+				05387059207B8CA500C8F0E9 /* FPSCounter.podspec */,
 				05387057207B860900C8F0E9 /* .swiftlint.yml */,
 				05371A2C1C88DEEF004C7A44 /* Sources */,
 				05371A381C88EA4C004C7A44 /* Sample App */,

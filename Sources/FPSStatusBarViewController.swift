@@ -128,4 +128,21 @@ public extension FPSCounter {
             )
         }
     }
+
+    /// Removes the label that shows the current FPS from the status bar.
+    ///
+    @objc public class func hide() {
+        let window = FPSStatusBarViewController.statusBarWindow
+
+        if let controller = window.rootViewController as? FPSStatusBarViewController {
+            controller.fpsCounter.stopTracking()
+            window.isHidden = true
+        }
+    }
+
+    /// Returns wether the FPS counter is currently visible or not.
+    ///
+    @objc public class var isVisible: Bool {
+        return !FPSStatusBarViewController.statusBarWindow.isHidden
+    }
 }

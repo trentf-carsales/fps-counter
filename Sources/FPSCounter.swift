@@ -55,19 +55,19 @@ public class FPSCounter: NSObject {
     /// `startTracking(inRunLoop:mode:)` method.
     ///
     public override init() {
-        displayLinkProxy = DisplayLinkProxy()
-        displayLink = CADisplayLink(
-            target: displayLinkProxy,
+        self.displayLinkProxy = DisplayLinkProxy()
+        self.displayLink = CADisplayLink(
+            target: self.displayLinkProxy,
             selector: #selector(DisplayLinkProxy.updateFromDisplayLink(_:))
         )
 
         super.init()
 
-        displayLinkProxy.parentCounter = self
+        self.displayLinkProxy.parentCounter = self
     }
 
     deinit {
-        displayLink.invalidate()
+        self.displayLink.invalidate()
     }
 
     // MARK: - Configuration
@@ -96,11 +96,11 @@ public class FPSCounter: NSObject {
     ///   - mode:    The mode(s) to track in the runloop
     ///
     @objc public func startTracking(inRunLoop runloop: RunLoop = .main, mode: RunLoopMode = .commonModes) {
-        stopTracking()
+        self.stopTracking()
 
         self.runloop = runloop
         self.mode = mode
-        displayLink.add(to: runloop, forMode: mode)
+        self.displayLink.add(to: runloop, forMode: mode)
     }
 
     /// Stop tracking FPS updates.
@@ -108,9 +108,9 @@ public class FPSCounter: NSObject {
     /// This method does nothing if the counter is not currently tracking.
     ///
     @objc public func stopTracking() {
-        guard let runloop = runloop, let mode = mode else { return }
+        guard let runloop = self.runloop, let mode = self.mode else { return }
 
-        displayLink.remove(from: runloop, forMode: mode)
+        self.displayLink.remove(from: runloop, forMode: mode)
         self.runloop = nil
         self.mode = nil
     }
@@ -121,26 +121,26 @@ public class FPSCounter: NSObject {
     private var numberOfFrames = 0
 
     private func updateFromDisplayLink(_ displayLink: CADisplayLink) {
-        if lastNotificationTime == 0.0 {
-            lastNotificationTime = CFAbsoluteTimeGetCurrent()
+        if self.lastNotificationTime == 0.0 {
+            self.lastNotificationTime = CFAbsoluteTimeGetCurrent()
             return
         }
 
-        numberOfFrames += 1
+        self.numberOfFrames += 1
 
         let currentTime = CFAbsoluteTimeGetCurrent()
-        let elapsedTime = currentTime - lastNotificationTime
+        let elapsedTime = currentTime - self.lastNotificationTime
 
-        if elapsedTime >= notificationDelay {
-            notifyUpdateForElapsedTime(elapsedTime)
-            lastNotificationTime = 0.0
-            numberOfFrames = 0
+        if elapsedTime >= self.notificationDelay {
+            self.notifyUpdateForElapsedTime(elapsedTime)
+            self.lastNotificationTime = 0.0
+            self.numberOfFrames = 0
         }
     }
 
     private func notifyUpdateForElapsedTime(_ elapsedTime: CFAbsoluteTime) {
-        let fps = Int(round(Double(numberOfFrames) / elapsedTime))
-        delegate?.fpsCounter(self, didUpdateFramesPerSecond: fps)
+        let fps = Int(round(Double(self.numberOfFrames) / elapsedTime))
+        self.delegate?.fpsCounter(self, didUpdateFramesPerSecond: fps)
     }
 }
 

@@ -20,13 +20,13 @@ class FPSStatusBarViewController: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
-        commonInit()
+        self.commonInit()
     }
 
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
 
-        commonInit()
+        self.commonInit()
     }
 
     private func commonInit() {
@@ -44,14 +44,14 @@ class FPSStatusBarViewController: UIViewController {
     // MARK: - View Lifecycle and Events
 
     override func loadView() {
-        view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0))
+        self.view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0))
 
-        label.frame = view.bounds.insetBy(dx: 10.0, dy: 0.0)
-        label.autoresizingMask = [ .flexibleWidth, .flexibleHeight ]
-        label.font = .boldSystemFont(ofSize: 10.0)
-        view.addSubview(label)
+        self.label.frame = self.view.bounds.insetBy(dx: 10.0, dy: 0.0)
+        self.label.autoresizingMask = [ .flexibleWidth, .flexibleHeight ]
+        self.label.font = .boldSystemFont(ofSize: 10.0)
+        self.view.addSubview(self.label)
 
-        fpsCounter.delegate = self
+        self.fpsCounter.delegate = self
     }
 
     @objc func updateStatusBarFrame(_ notification: Notification) {
@@ -77,18 +77,18 @@ extension FPSStatusBarViewController: FPSCounterDelegate {
 
     @objc func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
         let ms = 1000 / max(fps, 1)
-        label.text = "\(fps) FPS (\(ms) milliseconds per frame)"
+        self.label.text = "\(fps) FPS (\(ms) milliseconds per frame)"
 
         switch fps {
         case 45...:
-            view.backgroundColor = .green
-            label.textColor = .black
+            self.view.backgroundColor = .green
+            self.label.textColor = .black
         case 35...:
-            view.backgroundColor = .orange
-            label.textColor = .white
+            self.view.backgroundColor = .orange
+            self.label.textColor = .white
         default:
-            view.backgroundColor = .red
-            label.textColor = .white
+            self.view.backgroundColor = .red
+            self.label.textColor = .white
         }
     }
 }

@@ -49,9 +49,12 @@ class FPSStatusBarViewController: UIViewController {
     override func loadView() {
         self.view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0))
 
-        self.label.frame = self.view.bounds.insetBy(dx: 10.0, dy: 0.0)
-        self.label.autoresizingMask = [ .flexibleWidth, .flexibleHeight ]
-        self.label.font = .boldSystemFont(ofSize: 10.0)
+        let font = UIFont.boldSystemFont(ofSize: 10.0)
+        let rect = self.view.bounds.insetBy(dx: 10.0, dy: 0.0)
+
+        self.label.frame = CGRect(x: rect.origin.x, y: rect.maxY - font.lineHeight - 1.0, width: rect.width, height: font.lineHeight)
+        self.label.autoresizingMask = [ .flexibleWidth, .flexibleTopMargin ]
+        self.label.font = font
         self.view.addSubview(self.label)
 
         self.fpsCounter.delegate = self

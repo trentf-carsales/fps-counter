@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import FPSCounter
 
 class TableViewController: UITableViewController {
 

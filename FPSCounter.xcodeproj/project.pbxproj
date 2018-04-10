@@ -60,6 +60,10 @@
 		05371A531C88FBCB004C7A44 /* FPSStatusBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPSStatusBarViewController.swift; sourceTree = "<group>"; };
 		05387057207B860900C8F0E9 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		05387058207B88B500C8F0E9 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		05387059207B8CA500C8F0E9 /* FPSCounter.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = FPSCounter.podspec; sourceTree = "<group>"; };
+		0538705A207B8DAA00C8F0E9 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		0538705B207B8DAA00C8F0E9 /* .jazzy.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .jazzy.yaml; sourceTree = "<group>"; };
+		0538705C207B8DAB00C8F0E9 /* .swift-version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +90,11 @@
 			isa = PBXGroup;
 			children = (
 				05387058207B88B500C8F0E9 /* Readme.md */,
+				0538705A207B8DAA00C8F0E9 /* LICENSE */,
+				05387059207B8CA500C8F0E9 /* FPSCounter.podspec */,
+				0538705C207B8DAB00C8F0E9 /* .swift-version */,
 				05387057207B860900C8F0E9 /* .swiftlint.yml */,
+				0538705B207B8DAA00C8F0E9 /* .jazzy.yaml */,
 				05371A2C1C88DEEF004C7A44 /* Sources */,
 				05371A381C88EA4C004C7A44 /* Sample App */,
 				05371A551C89058A004C7A44 /* Frameworks */,

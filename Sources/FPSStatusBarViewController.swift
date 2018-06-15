@@ -71,7 +71,7 @@ class FPSStatusBarViewController: UIViewController {
     // MARK: - Getting the shared status bar window
 
     @objc static var statusBarWindow: UIWindow = {
-        let window = UIWindow()
+        let window = FPStatusBarWindow()
         window.windowLevel = UIWindowLevelStatusBar
         window.rootViewController = FPSStatusBarViewController()
         return window
@@ -84,11 +84,11 @@ class FPSStatusBarViewController: UIViewController {
 extension FPSStatusBarViewController: FPSCounterDelegate {
 
     @objc func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
+        self.resignKeyWindowIfNeeded()
+
         let milliseconds = 1000 / max(fps, 1)
         self.label.text = "\(fps) FPS (\(milliseconds) milliseconds per frame)"
-        if FPSStatusBarViewController.statusBarWindow.isKeyWindow {
-            UIApplication.shared.delegate?.window??.makeKeyAndVisible()
-        }
+
         switch fps {
         case 45...:
             self.view.backgroundColor = .green
@@ -99,6 +99,14 @@ extension FPSStatusBarViewController: FPSCounterDelegate {
         default:
             self.view.backgroundColor = .red
             self.label.textColor = .white
+        }
+    }
+
+    private func resignKeyWindowIfNeeded() {
+        // prevent the status bar window from becoming the key window and steal events
+        // from the main application window
+        if FPSStatusBarViewController.statusBarWindow.isKeyWindow {
+            UIApplication.shared.delegate?.window??.makeKey()
         }
     }
 }

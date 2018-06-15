@@ -18,6 +18,7 @@
 		05371A501C88EB6F004C7A44 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05371A4F1C88EB6F004C7A44 /* MapKit.framework */; };
 		05371A541C88FBCB004C7A44 /* FPSStatusBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05371A531C88FBCB004C7A44 /* FPSStatusBarViewController.swift */; };
 		05371A561C8907C0004C7A44 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05371A511C88F21A004C7A44 /* TableViewController.swift */; };
+		05537C3120D4251F0000FC69 /* FPSStatusBarWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05537C3020D4251F0000FC69 /* FPSStatusBarWindow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		0538705A207B8DAA00C8F0E9 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		0538705B207B8DAA00C8F0E9 /* .jazzy.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .jazzy.yaml; sourceTree = "<group>"; };
 		0538705C207B8DAB00C8F0E9 /* .swift-version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
+		05537C3020D4251F0000FC69 /* FPSStatusBarWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPSStatusBarWindow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				05371A2D1C88DEEF004C7A44 /* FPSCounter.h */,
 				05371A311C88DFFB004C7A44 /* FPSCounter.swift */,
 				05371A531C88FBCB004C7A44 /* FPSStatusBarViewController.swift */,
+				05537C3020D4251F0000FC69 /* FPSStatusBarWindow.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -203,7 +206,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "konoma GmbH";
 				TargetAttributes = {
 					05371A1E1C88DEA0004C7A44 = {
@@ -280,6 +283,7 @@
 			files = (
 				05371A541C88FBCB004C7A44 /* FPSStatusBarViewController.swift in Sources */,
 				05371A321C88DFFB004C7A44 /* FPSCounter.swift in Sources */,
+				05537C3120D4251F0000FC69 /* FPSStatusBarWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,12 +338,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -390,12 +396,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -431,7 +439,6 @@
 		05371A281C88DEA0004C7A44 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -454,7 +461,6 @@
 		05371A291C88DEA0004C7A44 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";

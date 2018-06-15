@@ -86,7 +86,7 @@ extension FPSStatusBarViewController: FPSCounterDelegate {
     @objc func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
         let milliseconds = 1000 / max(fps, 1)
         self.label.text = "\(fps) FPS (\(milliseconds) milliseconds per frame)"
-        if FPSStatusBarViewController.statusBarWindow == UIApplication.shared.keyWindow {
+        if FPSStatusBarViewController.statusBarWindow.isKeyWindow {
             UIApplication.shared.delegate?.window??.makeKeyAndVisible()
         }
         switch fps {

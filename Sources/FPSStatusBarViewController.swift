@@ -72,7 +72,7 @@ class FPSStatusBarViewController: UIViewController {
 
     @objc static var statusBarWindow: UIWindow = {
         let window = FPStatusBarWindow()
-        window.windowLevel = UIWindow.Level.statusBar
+        window.windowLevel = .statusBar
         window.rootViewController = FPSStatusBarViewController()
         return window
     }()
@@ -134,7 +134,7 @@ public extension FPSCounter {
         if let controller = window.rootViewController as? FPSStatusBarViewController {
             controller.fpsCounter.startTracking(
                 inRunLoop: runloop ?? .main,
-                mode: mode ?? RunLoop.Mode.common
+                mode: mode ?? .common
             )
         }
     }

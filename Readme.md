@@ -55,7 +55,7 @@ When you don't want to receive further updates, you can stop tracking:
 To install this library via [Carthage](https://github.com/Carthage/Carthage) add the
 following to your `Cartfile`:
 
-    github "konoma/fps-counter" ~> 2.1
+    github "konoma/fps-counter" ~> 3.0
 
 Then run the standard `carthage update` process.
 
@@ -65,7 +65,7 @@ Then run the standard `carthage update` process.
 To install this library via [CocoaPods](https://cocoapods.org) add the following to
 your `Podfile`:
 
-    pod 'FPSCounter', '~> 2.1'
+    pod 'FPSCounter', '~> 3.0'
 
 Then run the standard `pod update` process.
 

@@ -1,0 +1,8 @@
+os: osx
+osx_image: xcode10
+language: objective-c
+before_script: 
+  - pod lib lint --allow-warnings
+  - swiftlint
+script:
+- xcodebuild -scheme FPSCounter -destination "platform=iOS Simulator,name=iPhone 8,OS=12.0"

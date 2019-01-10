@@ -11,14 +11,14 @@ you'd like more control, you can have your own code notified of FPS changes and 
 as needed.
 
 _Note_: You should only use this for debugging purposes. Especially the status bar overlay
-will cause Apple to reject your app when reviewed.
+may cause Apple to reject your app when reviewed.
 
 
 ## Usage
 
 The easiest way to use this library is to add a label to the status bar:
 
-    FPSCounter.showInStatusBar(UIApplication.sharedApplication())
+    FPSCounter.showInStatusBar()
 
 This will replace the status bar with a label that shows the current frames per second
 the application manages to draw.
@@ -39,9 +39,9 @@ To retrieve updates you need to start tracking the FPS:
 
 If necessary you can specify what run loop and run loop mode to use while tracking:
 
-    self.fpsCounter.startTracking(inRunLoop: myRunLoop, mode: UITrackingRunLoopMode)
+    self.fpsCounter.startTracking(inRunLoop: myRunLoop, mode: .tracking)
 
-By default the `NSRunLoop.mainRunLoop()` and `NSRunLoopCommonModes` are used.
+By default `RunLoop.main`  and  `RunLoop.Mode.common` are used.
 
 When you don't want to receive further updates, you can stop tracking:
 

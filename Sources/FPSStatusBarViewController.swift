@@ -124,9 +124,17 @@ public extension FPSCounter {
     /// - Parameters:
     ///   - application: The `UIApplication` to show the FPS for
     ///   - runloop:     The `NSRunLoop` to use when tracking FPS. Default is the main run loop
-    ///   - mode:        The run loop mode to use when tracking. Default uses `NSRunLoopCommonModes`
+    ///   - mode:        The run loop mode to use when tracking. Default uses `RunLoop.Mode.common`
     ///
-    @objc public class func showInStatusBar(_ application: UIApplication, runloop: RunLoop = .main, mode: RunLoop.Mode = .common) {
+
+    // TODO: Handle old signature gracefully (showInStatusBar(_ application: ... ))
+    // TODO: Update documentation afterwards
+
+    @objc public class func showInStatusBar(
+        application: UIApplication = UIApplication.shared,
+        runloop: RunLoop = .main,
+        mode: RunLoop.Mode = .common
+    ) {
         let window = FPSStatusBarViewController.statusBarWindow
         window.frame = application.statusBarFrame
         window.isHidden = false

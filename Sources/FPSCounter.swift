@@ -17,7 +17,7 @@ import QuartzCore
 /// current FPS.
 ///
 /// If you just want to see the FPS in the application you can use the
-/// `FPSCounter.showInStatusBar(_:)` convenience method.
+/// `FPSCounter.showInStatusBar()` convenience method.
 ///
 public class FPSCounter: NSObject {
 
@@ -91,7 +91,7 @@ public class FPSCounter: NSObject {
     ///
     /// You can specify wich runloop to use for tracking, as well as the runloop modes.
     /// Usually you'll want the main runloop (default), and either the common run loop modes
-    /// (default), or the tracking mode (`UITrackingRunLoopMode`).
+    /// (default), or the tracking mode (`RunLoop.Mode.tracking`).
     ///
     /// When the counter is already tracking, it's stopped first.
     ///

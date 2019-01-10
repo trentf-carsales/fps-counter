@@ -14,7 +14,7 @@ import UIKit
 class FPSStatusBarViewController: UIViewController {
 
     fileprivate let fpsCounter = FPSCounter()
-    fileprivate let label = UILabel() // TODO: Make it private after deprecating swift 3 support
+    private let label = UILabel()
 
 
     // MARK: - Initialization
@@ -123,18 +123,18 @@ public extension FPSCounter {
     ///
     /// - Parameters:
     ///   - application: The `UIApplication` to show the FPS for
-    ///   - runloop:     The `NSRunLoop` to use when tracking FPS or `nil` (then it uses the main run loop)
-    ///   - mode:        The run loop mode to use when tracking. If `nil` it uses `NSRunLoopCommonModes`
+    ///   - runloop:     The `NSRunLoop` to use when tracking FPS. Default is the main run loop
+    ///   - mode:        The run loop mode to use when tracking. Default uses `NSRunLoopCommonModes`
     ///
-    @objc public class func showInStatusBar(_ application: UIApplication, runloop: RunLoop? = nil, mode: RunLoop.Mode? = nil) {
+    @objc public class func showInStatusBar(_ application: UIApplication, runloop: RunLoop = .main, mode: RunLoop.Mode = .common) {
         let window = FPSStatusBarViewController.statusBarWindow
         window.frame = application.statusBarFrame
         window.isHidden = false
 
         if let controller = window.rootViewController as? FPSStatusBarViewController {
             controller.fpsCounter.startTracking(
-                inRunLoop: runloop ?? .main,
-                mode: mode ?? .common
+                inRunLoop: runloop,
+                mode: mode
             )
         }
     }

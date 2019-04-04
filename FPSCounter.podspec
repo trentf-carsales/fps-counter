@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.name         = "FPSCounter"
-  s.version      = "3.0.0"
+  s.version      = "3.1.0"
   s.homepage     = "https://github.com/konoma/fps-counter"
   s.summary      = "A small library to measure the frame rate of an iOS Application."
   s.description  = <<-DESC

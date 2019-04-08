@@ -14,7 +14,7 @@
     <a title="FPSCounter Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">FPSCounter Docs</a> (100% documented)</p>
+        <p><a href="../index.html">FPSCounter Docs</a> (92% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -62,7 +62,7 @@ Set the delegate of this class to get notified in certain intervals of the
 current FPS.</p>
 
 <p>If you just want to see the FPS in the application you can use the
-<code>FPSCounter.showInStatusBar(_:)</code> convenience method.</p>
+<code>FPSCounter.showInStatusBar()</code> convenience method.</p>
 
           </section>
           <section class="section task-group-section">
@@ -105,6 +105,33 @@ current FPS.</p>
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@FPSCounter@objc(cs)FPSCounter(im)dealloc"></a>
+                    <a name="//apple_ref/swift/Method/deinit" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@FPSCounter@objc(cs)FPSCounter(im)dealloc">deinit</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">deinit</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
             <div class="task-group">
@@ -119,9 +146,9 @@ current FPS.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:10FPSCounterAAC8delegateAA0A8Delegate_pSgXwvp"></a>
+                    <a name="/s:10FPSCounterAAC8delegateAA0A8Delegate_pSgvp"></a>
                     <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
-                    <a class="token" href="#/s:10FPSCounterAAC8delegateAA0A8Delegate_pSgXwvp">delegate</a>
+                    <a class="token" href="#/s:10FPSCounterAAC8delegateAA0A8Delegate_pSgvp">delegate</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -199,7 +226,7 @@ current FPS.</p>
 
 <p>You can specify wich runloop to use for tracking, as well as the runloop modes.
 Usually you&rsquo;ll want the main runloop (default), and either the common run loop modes
-(default), or the tracking mode (<code>UITrackingRunLoopMode</code>).</p>
+(default), or the tracking mode (<code>RunLoop.Mode.tracking</code>).</p>
 
 <p>When the counter is already tracking, it&rsquo;s stopped first.</p>
 
@@ -291,9 +318,9 @@ Usually you&rsquo;ll want the main runloop (default), and either the common run 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@CM@FPSCounter@objc(cs)FPSCounter(cm)showInStatusBar:runloop:mode:"></a>
-                    <a name="//apple_ref/swift/Method/showInStatusBar(_:runloop:mode:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@CM@FPSCounter@objc(cs)FPSCounter(cm)showInStatusBar:runloop:mode:">showInStatusBar(_:runloop:mode:)</a>
+                    <a name="/c:@CM@FPSCounter@objc(cs)FPSCounter(cm)showInStatusBarWithApplication:runloop:mode:"></a>
+                    <a name="//apple_ref/swift/Method/showInStatusBar(application:runloop:mode:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@FPSCounter@objc(cs)FPSCounter(cm)showInStatusBarWithApplication:runloop:mode:">showInStatusBar(application:runloop:mode:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -314,7 +341,11 @@ Usually you&rsquo;ll want the main runloop (default), and either the common run 
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">showInStatusBar</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="nv">runloop</span><span class="p">:</span> <span class="kt">RunLoop</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">mode</span><span class="p">:</span> <span class="kt">RunLoop</span><span class="o">.</span><span class="kt">Mode</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+<span class="kd">class</span> <span class="kd">func</span> <span class="nf">showInStatusBar</span><span class="p">(</span>
+    <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span> <span class="o">=</span> <span class="o">.</span><span class="n">shared</span><span class="p">,</span>
+    <span class="nv">runloop</span><span class="p">:</span> <span class="kt">RunLoop</span> <span class="o">=</span> <span class="o">.</span><span class="n">main</span><span class="p">,</span>
+    <span class="nv">mode</span><span class="p">:</span> <span class="kt">RunLoop</span><span class="o">.</span><span class="kt">Mode</span> <span class="o">=</span> <span class="o">.</span><span class="n">common</span>
+<span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -342,7 +373,7 @@ Usually you&rsquo;ll want the main runloop (default), and either the common run 
                               </td>
                               <td>
                                 <div>
-                                  <p>The <code>NSRunLoop</code> to use when tracking FPS or <code>nil</code> (then it uses the main run loop)</p>
+                                  <p>The <code>NSRunLoop</code> to use when tracking FPS. Default is the main run loop</p>
                                 </div>
                               </td>
                             </tr>
@@ -354,7 +385,7 @@ Usually you&rsquo;ll want the main runloop (default), and either the common run 
                               </td>
                               <td>
                                 <div>
-                                  <p>The run loop mode to use when tracking. If <code>nil</code> it uses <code>NSRunLoopCommonModes</code></p>
+                                  <p>The run loop mode to use when tracking. Default uses <code>RunLoop.Mode.common</code></p>
                                 </div>
                               </td>
                             </tr>
@@ -385,7 +416,7 @@ Usually you&rsquo;ll want the main runloop (default), and either the common run 
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">hide</span><span class="p">()</span></code></pre>
+<span class="kd">class</span> <span class="kd">func</span> <span class="nf">hide</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -413,7 +444,7 @@ Usually you&rsquo;ll want the main runloop (default), and either the common run 
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="k">var</span> <span class="nv">isVisible</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+<span class="kd">class</span> <span class="k">var</span> <span class="nv">isVisible</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -425,8 +456,8 @@ Usually you&rsquo;ll want the main runloop (default), and either the common run 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/konoma/fps-counter" target="_blank" rel="external">Markus Gasser</a>. All rights reserved. (Last updated: 2018-10-12)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/konoma/fps-counter" target="_blank" rel="external">Markus Gasser</a>. All rights reserved. (Last updated: 2019-04-08)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

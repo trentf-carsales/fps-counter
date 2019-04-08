@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  s.source = { :git => "https://github.com/konoma/fps-counter.git", :tag => "3.0.0" }
+  s.source = { :git => "https://github.com/konoma/fps-counter.git", :tag => "4.0.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

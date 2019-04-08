@@ -130,7 +130,7 @@ public extension FPSCounter {
     // TODO: Handle old signature gracefully (showInStatusBar(_ application: ... ))
     // TODO: Update documentation afterwards
 
-    @objc public class func showInStatusBar(
+    @objc class func showInStatusBar(
         application: UIApplication = UIApplication.shared,
         runloop: RunLoop = .main,
         mode: RunLoop.Mode = .common
@@ -149,7 +149,7 @@ public extension FPSCounter {
 
     /// Removes the label that shows the current FPS from the status bar.
     ///
-    @objc public class func hide() {
+    @objc class func hide() {
         let window = FPSStatusBarViewController.statusBarWindow
 
         if let controller = window.rootViewController as? FPSStatusBarViewController {
@@ -160,7 +160,7 @@ public extension FPSCounter {
 
     /// Returns wether the FPS counter is currently visible or not.
     ///
-    @objc public class var isVisible: Bool {
+    @objc class var isVisible: Bool {
         return !FPSStatusBarViewController.statusBarWindow.isHidden
     }
 }

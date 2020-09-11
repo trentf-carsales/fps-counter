@@ -18,35 +18,46 @@ may cause Apple to reject your app when reviewed.
 
 The easiest way to use this library is to add a label to the status bar:
 
-    FPSCounter.showInStatusBar()
+```swift
+FPSCounter.showInStatusBar()
+```
 
 This will replace the status bar with a label that shows the current frames per second
 the application manages to draw.
 
 You can remove the label any time later:
 
-    FPSCounter.hide()
+```swift
+FPSCounter.hide()
+```
 
 If you'd like more control on how to display the frames, you can create a private
 `FPSCounter` instance and set a delegate
 
-    self.fpsCounter = FPSCounter()
-    self.fpsCounter.delegate = self
+```swift
+self.fpsCounter = FPSCounter()
+self.fpsCounter.delegate = self
+```
 
 To retrieve updates you need to start tracking the FPS:
 
-    self.fpsCounter.startTracking()
+```swift
+self.fpsCounter.startTracking()
+```
 
 If necessary you can specify what run loop and run loop mode to use while tracking:
 
-    self.fpsCounter.startTracking(inRunLoop: myRunLoop, mode: .tracking)
+```swift
+self.fpsCounter.startTracking(inRunLoop: myRunLoop, mode: .tracking)
+```
 
 By default `RunLoop.main`  and  `RunLoop.Mode.common` are used.
 
 When you don't want to receive further updates, you can stop tracking:
 
-    self.fpsCounter.stopTracking()
-
+```swift
+self.fpsCounter.stopTracking()
+```
 
 ## Installation
 
@@ -55,7 +66,9 @@ When you don't want to receive further updates, you can stop tracking:
 To install this library via [Carthage](https://github.com/Carthage/Carthage) add the
 following to your `Cartfile`:
 
-    github "konoma/fps-counter" ~> 4.0
+```ogdl
+github "konoma/fps-counter" ~> 4.0
+```
 
 Then run the standard `carthage update` process.
 
@@ -65,7 +78,9 @@ Then run the standard `carthage update` process.
 To install this library via [CocoaPods](https://cocoapods.org) add the following to
 your `Podfile`:
 
-    pod 'FPSCounter', '~> 4.0'
+```ruby
+pod 'FPSCounter', '~> 4.0'
+```
 
 Then run the standard `pod update` process.
 

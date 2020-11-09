@@ -66,6 +66,7 @@
 		0538705B207B8DAA00C8F0E9 /* .jazzy.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .jazzy.yaml; sourceTree = "<group>"; };
 		0538705C207B8DAB00C8F0E9 /* .swift-version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
 		05537C3020D4251F0000FC69 /* FPSStatusBarWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPSStatusBarWindow.swift; sourceTree = "<group>"; };
+		3B1885F425542C1A005E0773 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +92,7 @@
 		05371A151C88DEA0004C7A44 = {
 			isa = PBXGroup;
 			children = (
+				3B1885F425542C1A005E0773 /* Package.swift */,
 				05387058207B88B500C8F0E9 /* Readme.md */,
 				0538705A207B8DAA00C8F0E9 /* LICENSE */,
 				05387059207B8CA500C8F0E9 /* FPSCounter.podspec */,

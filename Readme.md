@@ -13,7 +13,6 @@ as needed.
 _Note_: You should only use this for debugging purposes. Especially the status bar overlay
 may cause Apple to reject your app when reviewed.
 
-
 ## Usage
 
 The easiest way to use this library is to add a label to the status bar:
@@ -51,7 +50,7 @@ If necessary you can specify what run loop and run loop mode to use while tracki
 self.fpsCounter.startTracking(inRunLoop: myRunLoop, mode: .tracking)
 ```
 
-By default `RunLoop.main`  and  `RunLoop.Mode.common` are used.
+By default `RunLoop.main` and `RunLoop.Mode.common` are used.
 
 When you don't want to receive further updates, you can stop tracking:
 
@@ -67,11 +66,10 @@ To install this library via [Carthage](https://github.com/Carthage/Carthage) add
 following to your `Cartfile`:
 
 ```ogdl
-github "konoma/fps-counter" ~> 4.0
+github "konoma/fps-counter" ~> 4.1
 ```
 
 Then run the standard `carthage update` process.
-
 
 ### CocoaPods
 
@@ -79,11 +77,10 @@ To install this library via [CocoaPods](https://cocoapods.org) add the following
 your `Podfile`:
 
 ```ruby
-pod 'FPSCounter', '~> 4.0'
+pod 'FPSCounter', '~> 4.1'
 ```
 
 Then run the standard `pod update` process.
-
 
 ## License
 

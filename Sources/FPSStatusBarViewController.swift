@@ -49,10 +49,11 @@ class FPSStatusBarViewController: UIViewController {
     override func loadView() {
         self.view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0))
 
-        let font = UIFont.boldSystemFont(ofSize: 10.0)
+        let font = UIFont.italicSystemFont(ofSize: 12)
         let rect = self.view.bounds.insetBy(dx: 10.0, dy: 0.0)
-
-        self.label.frame = CGRect(x: rect.origin.x, y: rect.maxY - font.lineHeight - 1.0, width: rect.width, height: font.lineHeight)
+        let statusBarFrame = getStatusBarFrame()
+        let labelOriginX = statusBarFrame.height > 24 ? rect.origin.x : (statusBarFrame.width/2.0) + 30
+        self.label.frame = CGRect(x: labelOriginX, y: rect.maxY - font.lineHeight - 2.0, width: rect.width, height: font.lineHeight)
         self.label.autoresizingMask = [ .flexibleWidth, .flexibleTopMargin ]
         self.label.font = font
         self.view.addSubview(self.label)
@@ -86,8 +87,16 @@ extension FPSStatusBarViewController: FPSCounterDelegate {
     @objc func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
         self.resignKeyWindowIfNeeded()
 
+        guard fps < 58 else {
+            FPSStatusBarViewController.statusBarWindow.isHidden = true
+            return
+        }
+        
+        FPSStatusBarViewController.statusBarWindow.isHidden = false
+        
         let milliseconds = 1000 / max(fps, 1)
-        self.label.text = "\(fps) FPS (\(milliseconds) milliseconds per frame)"
+        self.label.text = "\(fps) FPS (\(milliseconds)ms)"
+        self.label.textAlignment = .left
 
         switch fps {
         case 45...:

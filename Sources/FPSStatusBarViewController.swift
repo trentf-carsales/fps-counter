@@ -15,34 +15,14 @@ class FPSStatusBarViewController: UIViewController {
 
     fileprivate let fpsCounter = FPSCounter()
     private let label = UILabel()
-
-
-    // MARK: - Initialization
-
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-
-        self.commonInit()
+    
+    override func viewWillTransition(to size: CGSize,
+                                     with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { [weak self] _ in
+            self?.updateStatusBarFrame()
+        }, completion: nil)
     }
-
-    required init?(coder decoder: NSCoder) {
-        super.init(coder: decoder)
-
-        self.commonInit()
-    }
-
-    private func commonInit() {
-        NotificationCenter.default.addObserver(self,
-            selector: #selector(FPSStatusBarViewController.updateStatusBarFrame(_:)),
-            name: UIApplication.didChangeStatusBarOrientationNotification,
-            object: nil
-        )
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-
 
     // MARK: - View Lifecycle and Events
 
@@ -60,12 +40,9 @@ class FPSStatusBarViewController: UIViewController {
 
         self.fpsCounter.delegate = self
     }
-
-    @objc func updateStatusBarFrame(_ notification: Notification) {
-        let application = notification.object as? UIApplication
-        let frame = CGRect(x: 0.0, y: 0.0, width: application?.keyWindow?.bounds.width ?? 0.0, height: 20.0)
-
-        FPSStatusBarViewController.statusBarWindow.frame = frame
+    
+    private func updateStatusBarFrame() {
+        FPSStatusBarViewController.statusBarWindow.frame = getStatusBarFrame()
     }
 
 
@@ -77,6 +54,17 @@ class FPSStatusBarViewController: UIViewController {
         window.rootViewController = FPSStatusBarViewController()
         return window
     }()
+    
+    private func getStatusBarFrame() -> CGRect {
+        var statusBarFrame: CGRect
+        if let statusBarFrameRect = view.window?.windowScene?.statusBarManager?.statusBarFrame {
+            statusBarFrame = statusBarFrameRect
+        } else {
+            statusBarFrame = UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame ?? CGRect.zero
+        }
+        
+        return statusBarFrame
+    }
 }
 
 
@@ -141,7 +129,7 @@ public extension FPSCounter {
         mode: RunLoop.Mode = .common
     ) {
         let window = FPSStatusBarViewController.statusBarWindow
-        window.frame = application.statusBarFrame
+        window.frame = UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame ?? CGRect.zero
         window.isHidden = false
 
         if let controller = window.rootViewController as? FPSStatusBarViewController {

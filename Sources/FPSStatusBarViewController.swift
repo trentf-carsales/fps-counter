@@ -97,6 +97,7 @@ extension FPSStatusBarViewController: FPSCounterDelegate {
             self.view.backgroundColor = .red
             self.label.textColor = .white
         }
+        updateStatusBarFrame()
     }
 
     private func resignKeyWindowIfNeeded() {

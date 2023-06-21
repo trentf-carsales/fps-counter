@@ -32,8 +32,10 @@ class FPSStatusBarViewController: UIViewController {
         let font = UIFont.italicSystemFont(ofSize: 12)
         let rect = self.view.bounds.insetBy(dx: 10.0, dy: 0.0)
         let statusBarFrame = getStatusBarFrame()
-        let labelOriginX = statusBarFrame.height > 24 ? rect.origin.x : (statusBarFrame.width/2.0) + 30
-        self.label.frame = CGRect(x: labelOriginX, y: rect.maxY - font.lineHeight - 2.0, width: rect.width, height: font.lineHeight)
+        let labelOriginX = statusBarFrame.height > 24 ? rect.origin.x : (statusBarFrame.width/4.0) - 20
+        let padding = UIDevice.current.userInterfaceIdiom == .pad ? 4.0 : 2.0
+        let labelOriginY = rect.maxY - font.lineHeight - padding
+        self.label.frame = CGRect(x: labelOriginX, y: labelOriginY , width: rect.width, height: font.lineHeight)
         self.label.autoresizingMask = [ .flexibleWidth, .flexibleTopMargin ]
         self.label.font = font
         self.label.textColor = .black

@@ -56,7 +56,7 @@ class FPSStatusBarViewController: UIViewController {
         return window
     }()
     
-    private func getStatusBarFrame() -> CGRect {
+    fileprivate func getStatusBarFrame() -> CGRect {
         var statusBarFrame: CGRect
         if let statusBarFrameRect = view.window?.windowScene?.statusBarManager?.statusBarFrame {
             statusBarFrame = statusBarFrameRect
@@ -128,10 +128,9 @@ public extension FPSCounter {
         mode: RunLoop.Mode = .common
     ) {
         let window = FPSStatusBarViewController.statusBarWindow
-        window.frame = UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame ?? CGRect.zero
-        window.isHidden = false
-
         if let controller = window.rootViewController as? FPSStatusBarViewController {
+            window.isHidden = false
+            window.frame = controller.getStatusBarFrame()
             controller.fpsCounter.startTracking(
                 inRunLoop: runloop,
                 mode: mode

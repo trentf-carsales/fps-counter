@@ -36,6 +36,7 @@ class FPSStatusBarViewController: UIViewController {
         self.label.frame = CGRect(x: labelOriginX, y: rect.maxY - font.lineHeight - 2.0, width: rect.width, height: font.lineHeight)
         self.label.autoresizingMask = [ .flexibleWidth, .flexibleTopMargin ]
         self.label.font = font
+        self.label.textColor = .black
         self.view.addSubview(self.label)
 
         self.fpsCounter.delegate = self
@@ -89,13 +90,10 @@ extension FPSStatusBarViewController: FPSCounterDelegate {
         switch fps {
         case 45...:
             self.view.backgroundColor = .green
-            self.label.textColor = .black
         case 35...:
             self.view.backgroundColor = .orange
-            self.label.textColor = .white
         default:
             self.view.backgroundColor = .red
-            self.label.textColor = .white
         }
         updateStatusBarFrame()
     }

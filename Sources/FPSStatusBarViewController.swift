@@ -15,56 +15,37 @@ class FPSStatusBarViewController: UIViewController {
 
     fileprivate let fpsCounter = FPSCounter()
     private let label = UILabel()
-
-
-    // MARK: - Initialization
-
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-
-        self.commonInit()
+    
+    override func viewWillTransition(to size: CGSize,
+                                     with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { [weak self] _ in
+            self?.updateStatusBarFrame()
+        }, completion: nil)
     }
-
-    required init?(coder decoder: NSCoder) {
-        super.init(coder: decoder)
-
-        self.commonInit()
-    }
-
-    private func commonInit() {
-        NotificationCenter.default.addObserver(self,
-            selector: #selector(FPSStatusBarViewController.updateStatusBarFrame(_:)),
-            name: UIApplication.didChangeStatusBarOrientationNotification,
-            object: nil
-        )
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-
 
     // MARK: - View Lifecycle and Events
 
     override func loadView() {
         self.view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0))
 
-        let font = UIFont.boldSystemFont(ofSize: 10.0)
+        let font = UIFont.italicSystemFont(ofSize: 12)
         let rect = self.view.bounds.insetBy(dx: 10.0, dy: 0.0)
-
-        self.label.frame = CGRect(x: rect.origin.x, y: rect.maxY - font.lineHeight - 1.0, width: rect.width, height: font.lineHeight)
+        let statusBarFrame = getStatusBarFrame()
+        let labelOriginX = statusBarFrame.height > 24 ? rect.origin.x : (statusBarFrame.width/4.0) - 20
+        let padding = UIDevice.current.userInterfaceIdiom == .pad ? 4.0 : 2.0
+        let labelOriginY = rect.maxY - font.lineHeight - padding
+        self.label.frame = CGRect(x: labelOriginX, y: labelOriginY , width: rect.width, height: font.lineHeight)
         self.label.autoresizingMask = [ .flexibleWidth, .flexibleTopMargin ]
         self.label.font = font
+        self.label.textColor = .black
         self.view.addSubview(self.label)
 
         self.fpsCounter.delegate = self
     }
-
-    @objc func updateStatusBarFrame(_ notification: Notification) {
-        let application = notification.object as? UIApplication
-        let frame = CGRect(x: 0.0, y: 0.0, width: application?.keyWindow?.bounds.width ?? 0.0, height: 20.0)
-
-        FPSStatusBarViewController.statusBarWindow.frame = frame
+    
+    private func updateStatusBarFrame() {
+        FPSStatusBarViewController.statusBarWindow.frame = getStatusBarFrame()
     }
 
 
@@ -76,6 +57,17 @@ class FPSStatusBarViewController: UIViewController {
         window.rootViewController = FPSStatusBarViewController()
         return window
     }()
+    
+    fileprivate func getStatusBarFrame() -> CGRect {
+        var statusBarFrame: CGRect
+        if let statusBarFrameRect = view.window?.windowScene?.statusBarManager?.statusBarFrame {
+            statusBarFrame = statusBarFrameRect
+        } else {
+            statusBarFrame = UIApplication.shared.windows.first?.windowScene?.statusBarManager?.statusBarFrame ?? CGRect.zero
+        }
+        
+        return statusBarFrame
+    }
 }
 
 
@@ -86,20 +78,26 @@ extension FPSStatusBarViewController: FPSCounterDelegate {
     @objc func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
         self.resignKeyWindowIfNeeded()
 
+        guard fps < 58 else {
+            FPSStatusBarViewController.statusBarWindow.isHidden = true
+            return
+        }
+        
+        FPSStatusBarViewController.statusBarWindow.isHidden = false
+        
         let milliseconds = 1000 / max(fps, 1)
-        self.label.text = "\(fps) FPS (\(milliseconds) milliseconds per frame)"
+        self.label.text = "\(fps) FPS (\(milliseconds)ms)"
+        self.label.textAlignment = .left
 
         switch fps {
         case 45...:
             self.view.backgroundColor = .green
-            self.label.textColor = .black
         case 35...:
             self.view.backgroundColor = .orange
-            self.label.textColor = .white
         default:
             self.view.backgroundColor = .red
-            self.label.textColor = .white
         }
+        updateStatusBarFrame()
     }
 
     private func resignKeyWindowIfNeeded() {
@@ -132,10 +130,9 @@ public extension FPSCounter {
         mode: RunLoop.Mode = .common
     ) {
         let window = FPSStatusBarViewController.statusBarWindow
-        window.frame = application.statusBarFrame
-        window.isHidden = false
-
         if let controller = window.rootViewController as? FPSStatusBarViewController {
+            window.isHidden = false
+            window.frame = controller.getStatusBarFrame()
             controller.fpsCounter.startTracking(
                 inRunLoop: runloop,
                 mode: mode
